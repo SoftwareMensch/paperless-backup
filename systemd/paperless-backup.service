@@ -1,0 +1,25 @@
+[Unit]
+Description=Paperless-NGX Backup Service
+Documentation=https://github.com/SoftwareMensch/paperless-backup.git
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/paperless-backup
+User=root
+Group=root
+StandardOutput=journal
+StandardError=journal
+
+# Security hardening
+PrivateTmp=yes
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/local/paperless-ngx/backups
+ReadOnlyPaths=/var/lib/docker
+
+[Install]
+WantedBy=multi-user.target
+

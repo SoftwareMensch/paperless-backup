@@ -1,0 +1,12 @@
+[Unit]
+Description=Run Paperless-NGX backup daily
+Documentation=https://github.com/SoftwareMensch/paperless-backup.git
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=1h
+AccuracySec=6h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
